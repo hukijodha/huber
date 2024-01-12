@@ -1,0 +1,36 @@
+spring:
+  datasource:
+    url: jdbc:mysql://localhost:33306/huber?allowPublicKeyRetrieval=true&useSSL=false
+    password: root
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    username: root
+
+  jpa:
+    database: mysql
+    show-sql: false
+    database-platform: org.hibernate.dialect.MySQL5Dialect
+    hibernate:
+      ddl-auto: update
+
+  kafka:
+    bootstrap-servers: localhost:9092
+    consumer:
+      group-id: my-group
+      key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+      value-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+    producer:
+      key-serializer: org.apache.kafka.common.serialization.StringSerializer
+      value-serializer: org.springframework.kafka.support.serializer.JsonSerializer
+
+  data:
+    mongodb:
+      uri:   mongodb://localhost:27017/myfilesdb
+
+jwt:
+  secret: 50D78783DF40639445E739E6792174C4BFDE5EDE014E54DF0E11D5862C12BEC4E739E6792174C4BFE739E6792174C4BF
+
+kafka:
+  consumer:
+    topic: driver-updates
+  producer:
+    topic: new-driver
